@@ -8,7 +8,7 @@ export const config = {
   head: {
     title: '苏茂林的博客',
     brand: '苏茂林',
-    description: '苏茂林 Blog | 关于全栈技术 关于AI使用！',
+    description: '苏茂林的博客 | 关于全栈技术 关于AI使用！',
   },
   footer: {
     copyright: '© sumaolin',
