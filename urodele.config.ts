@@ -17,7 +17,23 @@ export const config = {
   pagination: {
     size: 10,
   },
-  giscus: false as object | false,
+  giscus: {
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'sumaolin/sumaolin.github.io',
+    'data-repo-id': 'R_kgDONxoaGA',
+    'data-category': 'Announcements',
+    'data-category-id': 'DIC_kwDONxoaGM4CwonP',
+    'data-mapping': 'pathname',
+    'data-strict': '0',
+    'data-reactions-enabled': '1',
+    'data-emit-metadata': '1',
+    'data-input-position': 'bottom',
+    'data-theme': 'preferred_color_scheme',
+    'data-lang': 'zh-CN',
+    'data-loading': 'lazy',
+    crossorigin: 'anonymous',
+    async: true,
+  } as object | false,
 } as const
 
 export default config
