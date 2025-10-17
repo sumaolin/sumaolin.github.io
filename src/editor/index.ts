@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/core";
 import GlobalFrontHandle from "./frontHandle";
-import "./style.scss";
+
 import { generateHTML } from "@tiptap/html";
 
 import { createSlashCommandPlugin } from "./commands";

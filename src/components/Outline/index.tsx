@@ -1,6 +1,6 @@
 import { throttle } from "@/shared/debounce";
 import * as React from "jsx-dom";
-import "./style.scss";
+
 
 export const mount = (selector: string) => {
   const root = document.querySelector(selector);
@@ -78,7 +78,8 @@ export const mount = (selector: string) => {
             href={`#${h.id}`}
             data-anchor-id={h.id}
             data-anchor-tag={h.tagName}
-            class="opacity-50 hover:opacity-80 min-w-[180px]">
+            class="opacity-50 hover:opacity-80 min-w-[180px]"
+            style={{ marginLeft: `${(parseInt(h.tagName.substring(1)) - 1) * 12}px` }}>
             {h.textContent}
           </a>
         ))}

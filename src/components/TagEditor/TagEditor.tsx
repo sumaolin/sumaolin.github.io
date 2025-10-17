@@ -1,8 +1,6 @@
 import * as React from "jsx-dom";
 import { getGlobalData } from "@/utils/data";
-import style from "./style.module.scss";
 import { TAG_PIN } from "@/shared/tag";
-import { cn } from "@/utils/dom";
 
 export const createTagEditor = async (root: HTMLElement, initial: string[]) => {
   const data = await getGlobalData();
@@ -14,7 +12,7 @@ export const createTagEditor = async (root: HTMLElement, initial: string[]) => {
     const tagEditor = React.createRef();
     const tagsListWrapper = React.createRef();
     const createTag = (tag: string) => (
-      <div key={tag} class={cn("rounded px-3 py-1 cursor-pointer relative group", style["tag"])}>
+      <div key={tag} class="rounded px-3 py-1 cursor-pointer relative group dark:text-gray transition-all ease-in-out duration-250 hover:bg-gray-200 dark:hover:bg-gray-700">
         <button
           class="opacity-0 transition-delay-[0.25s] group-hover:opacity-100 absolute bg-red top-0 right-0 w-3 h-3 rounded-full flex items-center justify-center"
           onClick={() => toRemove(tag)}>
@@ -60,13 +58,13 @@ export const createTagEditor = async (root: HTMLElement, initial: string[]) => {
     };
 
     return (
-      <div ref={tagEditor} class={cn("flex text-sm px-[28px] gap-2 w-full max-w-[720px]", style["tag-editor"])}>
+      <div ref={tagEditor} class="flex text-sm px-[28px] gap-2 w-full max-w-[720px]">
         <div ref={tagsListWrapper} class="flex gap-2">
           {tagList()}
         </div>
-        <div class={cn("relative", style["add-tag"])}>
+        <div class="relative group">
           <button class="rounded text-gray hover:bg-gray-200 px-2 py-1 cursor-pointer">#Add a Tag</button>
-          <div class={cn("absolute z-[50]", style["tag-selector"])}>
+          <div class="absolute z-[50] hidden group-focus-within:block">
             <div class="flex flex-col bg-modal shadow-md rounded p-2 gap-2 text-sm">
               <div class="flex items-center justify-center gap-2">
                 <input

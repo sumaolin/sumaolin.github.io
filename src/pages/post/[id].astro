@@ -1,6 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import "@/editor/style.scss";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getPageList, getSinglePageData } from "@/pages/api/post/list";
 import config from "urodele.config";
 
@@ -30,7 +29,7 @@ export const getStaticPaths = async () => {
   mountOutline(".outline-wrapper");
 </script>
 
-<Layout title={post.title} description={post.intro}>
+<BaseLayout title={post.title} description={post.intro}>
   <main>
     <div class="content">
       <div class="w-full flex gap-2 pb-2">
@@ -44,7 +43,7 @@ export const getStaticPaths = async () => {
           ))
         }
       </div>
-      <div class="ud-root read-only flex-1" set:html={post.html} />
+      <div class="prose prose-dante max-w-none sm:prose-lg" set:html={post.html} />
 
       <div data-page-id={post.id} class="navigator flex justify-between items-center mt-4 py-4">
         {
@@ -82,4 +81,4 @@ export const getStaticPaths = async () => {
       </div>
     )
   }
-</Layout>
+</BaseLayout>

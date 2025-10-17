@@ -1,0 +1,10 @@
+---
+import config from 'urodele.config';
+---
+
+<header class="w-full max-w-3xl mx-auto mb-12 sm:mb-16">
+    <a class="font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl" href="/">
+        {config.head.title}
+    </a>
+    {config.head.description && <p class="text-sm leading-tight mt-1">{config.head.description}</p>}
+</header>

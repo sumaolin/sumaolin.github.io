@@ -1,12 +1,9 @@
 import * as React from "jsx-dom";
 import { useDialog } from "../Dialog";
-import { cn, useAttrRef } from "@/utils/dom";
+import { useAttrRef } from "@/utils/dom";
 import { getUserInfo, login, logout } from "./auth.js";
 import { getGlobalData } from "@/utils/data.js";
 import { formatSecond } from "@/shared/time.js";
-import styles from "./style.module.scss";
-import config from "urodele.config";
-import type { UserInfo } from "@/shared/storage.js";
 
 const Login = () => {
   const createModal = () => {
@@ -32,19 +29,19 @@ const Login = () => {
     };
     const showOAuthLogin = Boolean(config.github.logInUrl);
     return (
-      <div class={cn("flex flex-col p-4", styles.tabset)}>
-        <input type="radio" name="tabset" id="tab1" data-tab-name="direct" checked={!showOAuthLogin} />
-        <input type="radio" name="tabset" id="tab2" data-tab-name="app" checked={showOAuthLogin} />
-        <div class={cn("flex gap-4 justify-center pb-4", styles["tab-labels"], !showOAuthLogin && "hidden!")}>
-          <label data-tab-name="direct" htmlFor="tab1" class="cursor-pointer">
+      <div class={cn("flex flex-col p-4")}>
+        <input type="radio" name="tabset" id="tab1" class="hidden peer/direct" checked={!showOAuthLogin} />
+        <input type="radio" name="tabset" id="tab2" class="hidden peer/app" checked={showOAuthLogin} />
+        <div class={cn("flex gap-4 justify-center pb-4", !showOAuthLogin && "hidden!")}>
+          <label htmlFor="tab1" class="cursor-pointer peer-checked/direct:border-b-2 peer-checked/direct:border-red-500">
             Direct
           </label>
-          <label data-tab-name="app" htmlFor="tab2" class="cursor-pointer">
+          <label htmlFor="tab2" class="cursor-pointer peer-checked/app:border-b-2 peer-checked/app:border-red-500">
             App
           </label>
         </div>
-        <div class={cn(styles["tab-panels"])}>
-          <div class={cn("panel-direct", styles["tab-panel"])} data-tab-name="direct">
+        <div class="flex">
+          <div class="hidden peer-checked/direct:block w-full">
             <div class="flex flex-col gap-4">
               <div>Enter your github token:</div>
               <p class="text-red text-sm font-bold">
@@ -69,7 +66,7 @@ const Login = () => {
               </button>
             </div>
           </div>
-          <div class={cn("panel-app w-full h-full", styles["tab-panel"])} data-tab-name="app">
+          <div class="hidden peer-checked/app:block w-full h-full">
             <div class="w-full h-full flex justify-center p-2">
               <a href={config.github.logInUrl} class="buttoned bg-[#202328] text-white text-sm">
                 <div class="i-ri:github-fill"></div> Login with Github

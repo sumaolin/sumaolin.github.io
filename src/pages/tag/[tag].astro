@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getPageList } from "@/pages/api/post/list";
 
 const tag = (Astro.params as any).tag;
@@ -26,7 +26,7 @@ export const getStaticPaths = async () => {
   mount("data-acc-time");
 </script>
 
-<Layout title={`Tag | ${decodeURIComponent(tag)}`}>
+<BaseLayout title={`Tag | ${decodeURIComponent(tag)}`}>
   <main>
     <div class="content flex flex-col w-full items-center justify-center px-4">
       <div class="w-full flex justify-between">
@@ -50,4 +50,4 @@ export const getStaticPaths = async () => {
       <a href="/tag" class="mt-4 text-blue"> All Tags </a>
     </div>
   </main>
-</Layout>
+</BaseLayout>

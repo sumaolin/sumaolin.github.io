@@ -1,8 +1,9 @@
----
-import "@/index.scss";
+--- 
+import "@/styles/global.css";
 import Auth from "@/components/Auth/index.astro";
 import Footer from "@/components/Footer.astro";
 import config from "urodele.config";
+import ThemeToggle from "@/components/ThemeToggle.astro";
 
 interface Props {
   title?: string;
@@ -38,26 +39,11 @@ const { title, description, footer = true } = Astro.props;
       </a>
       <div class="flex gap-2 items-center header-operations">
         <slot name="operations" />
-        {(<Auth />)}
+        <ThemeToggle />
+        <Auth />
       </div>
     </header>
     <slot />
     {footer && <Footer />}
   </body>
 </html>
-<style is:global>
-  main {
-    display: flex;
-    width: 100%;
-    padding: 0 16px;
-    gap: 12px;
-    justify-content: center;
-  }
-  .content {
-    /* width: 100%; */
-    max-width: 720px;
-    /* padding: 0 24px; */
-    overflow-x: hidden;
-    flex: 1 1 0;
-  }
-</style>

@@ -1,29 +1,46 @@
 ---
+import { locales } from '../i18n';
+import siteConfig from '../data/site-config';
+
+const i18n = locales[siteConfig.locale];
+
 interface Props {
   page: number;
   pages: number;
 }
 
 const { page, pages } = Astro.props;
-
-const visible = pages > 1;
-
-const indicators = Array.from({ length: pages }, (_, i) => i);
+const hasPrev = page > 0;
+const hasNext = page < pages - 1;
+const prevUrl = page - 1 === 0 ? '/' : `/${page - 1}`;
+const nextUrl = `/${page + 1}`;
 ---
 
-{
-  visible && (
-    <div class="flex justify-center flex-wrap gap-2 py-4 text-sm">
-      {indicators.map((i) => (
-        <a
-          class={
-            `rounded border w-8 h-8 overflow-hidden whitespace-pre-wrap flex items-center justify-center` +
-            (i === page ? " bg-gray text-white" : "")
-          }
-          href={`/${i === 0 ? "" : i}`}>
-          {i + 1}
-        </a>
-      ))}
+<nav class="flex justify-between" aria-label="Pagination">
+    <div class="flex flex-1 justify-start">
+        {
+            hasPrev && (
+                <a href={prevUrl} class="px-4 font-medium hover:underline">
+                    ← {i18n.components.pagination.prev}
+                </a>
+            )
+        }
     </div>
-  )
-}
+    <div class="flex flex-1 justify-center text-center">
+        <span class="px-4">
+            {i18n.components.pagination.page}
+            {page + 1}
+            {i18n.components.pagination.of}
+            {pages}
+        </span>
+    </div>
+    <div class="flex flex-1 justify-end">
+        {
+            hasNext && (
+                <a href={nextUrl} class="px-4 font-medium hover:underline">
+                    {i18n.components.pagination.next} →
+                </a>
+            )
+        }
+    </div>
+</nav>
