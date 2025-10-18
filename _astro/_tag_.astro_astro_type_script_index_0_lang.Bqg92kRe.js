@@ -1,0 +1,1 @@
+import{d as a,r as m}from"./relativeTime.i3NL2rpW.js";import"./_commonjsHelpers.Cpj98o6Y.js";a.extend(m);function r(o){document.querySelectorAll(`[${o}]`).forEach(t=>{const e=parseInt(t.dataset.accTime||"0",10);e&&(t.textContent=a(e).fromNow())})}r("data-acc-time");

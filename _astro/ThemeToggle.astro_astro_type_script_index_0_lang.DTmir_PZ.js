@@ -1,0 +1,1 @@
+import{t as e}from"./theme.B-anwSEj.js";e.subscribe(t=>{t==="dark"?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")});document.addEventListener("astro:after-swap",()=>{e.get()==="dark"?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")});
